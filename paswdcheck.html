@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        input { padding: 10px; width: 250px; margin-top: 10px; }
+        p { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Password Strength Checker</h2>
+    <input type="password" id="password" placeholder="Enter your password">
+    <p id="strength"></p>
+
+    <script>
+        function checkStrength(password) {
+            if (password.length < 6) return "Very Weak (Password should be more than 6 characters long)";
+            if (!/[A-Z]/.test(password)) return "Weak (Password should contain an uppercase letter)";
+            if (!/[a-z]/.test(password)) return "Weak (Password should contain a lowercase letter)";
+            if (!/[0-9]/.test(password)) return "Medium (Password should contain a number)";
+            if (!/[^A-Za-z0-9]/.test(password)) return "Strong (Password should contain a special character)";
+            return "Very Strong";
+        }
+
+        document.getElementById("password").addEventListener("input", function() {
+            const password = this.value;
+            document.getElementById("strength").innerText = password ? "Strength: " + checkStrength(password) : "";
+        });
+    </script>
+
+</body>
+</html>
