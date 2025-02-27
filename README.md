@@ -1,2 +1,2 @@
 # requested
-code for projects
+code for projects. rudimentary. not recommended.
